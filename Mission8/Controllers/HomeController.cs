@@ -21,5 +21,13 @@ namespace Mission8.Controllers
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
+        public IActionResult Quadrants()
+        {
+            return View();
+        }
+        public IActionResult Tasks()
+        {
+            return View();
+        }
     }
 }
