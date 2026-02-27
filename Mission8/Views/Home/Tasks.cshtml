@@ -8,6 +8,7 @@
 
 @model Mission8.Models.TaskItem
 
+
 @{
     ViewData["Title"] = "Add/Edit Task";
 }
@@ -19,27 +20,27 @@
             <!-- Ryan: Heading dynamically says Add or Edit based on TaskId -->
             <h2 class="mb-4">@((Model?.TaskId == 0 || Model == null) ? "Add Task" : "Edit Task")</h2>
 
-            <!-- Ryan: Form posts to SaveTask — Person 4 needs to create this action -->
+            <!-- Ryan: Form posts to SaveTask ï¿½ Person 4 needs to create this action -->
             <form asp-action="SaveTask" method="post">
 
                 <!-- Ryan: Hidden TaskId tells controller if this is Add (0) or Edit (>0) -->
                 <input type="hidden" asp-for="TaskId" />
 
-                <!-- Ryan: Task Name — Required field per assignment -->
+                <!-- Ryan: Task Name ï¿½ Required field per assignment -->
                 <div class="mb-3">
                     <label asp-for="TaskName" class="form-label">Task <span class="text-danger">*</span></label>
                     <input asp-for="TaskName" class="form-control" placeholder="Enter task name" />
                     <span asp-validation-for="TaskName" class="text-danger"></span>
                 </div>
 
-                <!-- Ryan: Due Date — Optional per assignment -->
+                <!-- Ryan: Due Date ï¿½ Optional per assignment -->
                 <div class="mb-3">
                     <label asp-for="DueDate" class="form-label">Due Date</label>
                     <input asp-for="DueDate" type="date" class="form-control" />
                     <span asp-validation-for="DueDate" class="text-danger"></span>
                 </div>
 
-                <!-- Ryan: Quadrant — Required, 4 hardcoded options per assignment spec -->
+                <!-- Ryan: Quadrant ï¿½ Required, 4 hardcoded options per assignment spec -->
                 <div class="mb-3">
                     <label asp-for="Quadrant" class="form-label">Quadrant <span class="text-danger">*</span></label>
                     <select asp-for="Quadrant" class="form-select">
@@ -52,7 +53,7 @@
                     <span asp-validation-for="Quadrant" class="text-danger"></span>
                 </div>
 
-                <!-- Ryan: Category dropdown — populated via ViewBag.Categories
+                <!-- Ryan: Category dropdown ï¿½ populated via ViewBag.Categories
                      Person 4 (Controller) needs to pass a SelectList named "Categories"
                      Person 1 (Models) needs a Category table with Id and Name -->
                 <div class="mb-3">
@@ -62,7 +63,7 @@
                     </select>
                 </div>
 
-                <!-- Ryan: Completed checkbox — True/False per assignment -->
+                <!-- Ryan: Completed checkbox ï¿½ True/False per assignment -->
                 <div class="mb-3 form-check">
                     <input asp-for="Completed" class="form-check-input" type="checkbox" />
                     <label asp-for="Completed" class="form-check-label">Completed</label>
