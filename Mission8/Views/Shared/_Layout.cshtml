@@ -11,37 +11,59 @@
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+        <!-- =====================================================
+             Ryan: Updated navbar from light to dark theme
+             and changed brand name to reflect the app purpose
+             ===================================================== -->
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-dark border-bottom box-shadow mb-3">
             <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Mission8</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
+
+                <!-- Ryan: Brand link now points to Quadrants as the home base -->
+                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Quadrants">7 Habits Task Manager</a>
+
+                <!-- Hamburger button for mobile — unchanged from default -->
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse"
+                        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
+
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                    <!-- =====================================================
+                         Ryan: Replaced default Home/Privacy nav links
+                         with the two required app views per assignment spec
+                         ===================================================== -->
                     <ul class="navbar-nav flex-grow-1">
+
+                        <!-- Ryan: Nav link to the Add/Edit Task form (Tasks action) -->
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                            <a class="nav-link text-white" asp-area="" asp-controller="Home" asp-action="Tasks">Add/Edit Task</a>
                         </li>
+
+                        <!-- Ryan: Nav link to the Quadrants view (Quadrants action) -->
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                            <a class="nav-link text-white" asp-area="" asp-controller="Home" asp-action="Quadrants">View Quadrants</a>
                         </li>
+
                     </ul>
                 </div>
             </div>
         </nav>
     </header>
+
+    <!-- Main content area — unchanged, each view renders inside @RenderBody() -->
     <div class="container">
         <main role="main" class="pb-3">
             @RenderBody()
         </main>
     </div>
 
-    <footer class="border-top footer text-muted">
+    <!-- Ryan: Updated footer text to match app name -->
+    <footer class="border-top footer text-muted mt-4">
         <div class="container">
-            &copy; 2026 - Mission8 - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+            &copy; 2026 - 7 Habits Task Manager
         </div>
     </footer>
+
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
