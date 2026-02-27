@@ -1,18 +1,88 @@
+@* =====================================================
+   Ryan: This entire file is owned by Ryan
+   Add/Edit Task form view
+   - Model: Mission8.Models.TaskItem
+   - Posts to: HomeController.SaveTask (Person 4's responsibility)
+   - Requires: ViewBag.Categories SelectList from controller (Person 4)
+   ===================================================== *@
+
+@model Mission8.Models.TaskItem
 
 
 @{
-    Layout = null;
+    ViewData["Title"] = "Add/Edit Task";
 }
 
-<!DOCTYPE html>
+<div class="container mt-4">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
 
-<html>
-<head>
-    <title>title</title>
-</head>
-<body>
-<div>
-      
+            <!-- Ryan: Heading dynamically says Add or Edit based on TaskId -->
+            <h2 class="mb-4">@((Model?.TaskId == 0 || Model == null) ? "Add Task" : "Edit Task")</h2>
+
+            <!-- Ryan: Form posts to SaveTask � Person 4 needs to create this action -->
+            <form asp-action="SaveTask" method="post">
+
+                <!-- Ryan: Hidden TaskId tells controller if this is Add (0) or Edit (>0) -->
+                <input type="hidden" asp-for="TaskId" />
+
+                <!-- Ryan: Task Name � Required field per assignment -->
+                <div class="mb-3">
+                    <label asp-for="TaskName" class="form-label">Task <span class="text-danger">*</span></label>
+                    <input asp-for="TaskName" class="form-control" placeholder="Enter task name" />
+                    <span asp-validation-for="TaskName" class="text-danger"></span>
+                </div>
+
+                <!-- Ryan: Due Date � Optional per assignment -->
+                <div class="mb-3">
+                    <label asp-for="DueDate" class="form-label">Due Date</label>
+                    <input asp-for="DueDate" type="date" class="form-control" />
+                    <span asp-validation-for="DueDate" class="text-danger"></span>
+                </div>
+
+                <!-- Ryan: Quadrant � Required, 4 hardcoded options per assignment spec -->
+                <div class="mb-3">
+                    <label asp-for="Quadrant" class="form-label">Quadrant <span class="text-danger">*</span></label>
+                    <select asp-for="Quadrant" class="form-select">
+                        <option value="">-- Select Quadrant --</option>
+                        <option value="1">Quadrant I: Important / Urgent</option>
+                        <option value="2">Quadrant II: Important / Not Urgent</option>
+                        <option value="3">Quadrant III: Not Important / Urgent</option>
+                        <option value="4">Quadrant IV: Not Important / Not Urgent</option>
+                    </select>
+                    <span asp-validation-for="Quadrant" class="text-danger"></span>
+                </div>
+
+                <!-- Ryan: Category dropdown � populated via ViewBag.Categories
+                     Person 4 (Controller) needs to pass a SelectList named "Categories"
+                     Person 1 (Models) needs a Category table with Id and Name -->
+                <div class="mb-3">
+                    <label asp-for="CategoryId" class="form-label">Category</label>
+                    <select asp-for="CategoryId" asp-items="ViewBag.Categories" class="form-select">
+                        <option value="">-- Select Category --</option>
+                    </select>
+                </div>
+
+                <!-- Ryan: Completed checkbox � True/False per assignment -->
+                <div class="mb-3 form-check">
+                    <input asp-for="Completed" class="form-check-input" type="checkbox" />
+                    <label asp-for="Completed" class="form-check-label">Completed</label>
+                </div>
+
+                <!-- Ryan: Save button + Cancel button that returns to Quadrants -->
+                <div class="d-flex gap-2">
+                    <button type="submit" class="btn btn-primary">Save Task</button>
+                    <a asp-action="Quadrants" class="btn btn-secondary">Cancel</a>
+                </div>
+
+            </form>
+        </div>
+    </div>
 </div>
-</body>
-</html>
+
+<!-- Ryan: Client-side validation scripts for Required field enforcement -->
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+     }
+}
