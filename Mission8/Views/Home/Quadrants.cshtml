@@ -1,18 +1,66 @@
-@model TModel
+@model List<TaskModel>
 
 @{
-    Layout = null;
+    ViewData["Title"] = "Task Quadrants";
 }
 
-<!DOCTYPE html>
+<div class="container mt-4">
+    <div class="text-center mb-4">
+        <h1 class="display-4">Time Management Matrix</h1>
+        <p class="lead">"Put First Things First"</p>
+    </div>
 
-<html>
-<head>
-    <title>title</title>
-</head>
-<body>
-<div>
-      
+    @* Top Row: Quadrants I and II *@
+    <div class="row g-0">
+        <div class="col-6 border p-3" style="min-height: 250px;">
+            <h3 class="bg-danger text-white p-2 text-center shadow-sm">Quadrant I: Urgent & Important</h3>
+            @if (Model.Any(x => x.Quadrant == 1 && !x.Completed))
+            {
+                @await Html.PartialAsync("_TaskTable", Model.Where(x => x.Quadrant == 1 && !x.Completed).ToList())
+            }
+            else
+            {
+                <p class="text-muted text-center mt-4"><em>No urgent/important tasks!</em></p>
+            }
+        </div>
+
+        <div class="col-6 border p-3" style="min-height: 250px;">
+            <h3 class="bg-primary text-white p-2 text-center shadow-sm">Quadrant II: Not Urgent & Important</h3>
+            @if (Model.Any(x => x.Quadrant == 2 && !x.Completed))
+            {
+                @await Html.PartialAsync("_TaskTable", Model.Where(x => x.Quadrant == 2 && !x.Completed).ToList())
+            }
+            else
+            {
+                <p class="text-muted text-center mt-4"><em>No important tasks. Focus here for growth!</em></p>
+            }
+        </div>
+    </div>
+
+    @* Bottom Row: Quadrants III and IV *@
+    <div class="row g-0">
+        <div class="col-6 border p-3" style="min-height: 250px;">
+            <h3 class="bg-warning text-dark p-2 text-center shadow-sm">Quadrant III: Urgent & Not Important</h3>
+            @if (Model.Any(x => x.Quadrant == 3 && !x.Completed))
+            {
+                @await Html.PartialAsync("_TaskTable", Model.Where(x => x.Quadrant == 3 && !x.Completed).ToList())
+            }
+            else
+            {
+                <p class="text-muted text-center mt-4"><em>No interruptions currently.</em></p>
+            }
+        </div>
+
+        <div class="col-6 border p-3" style="min-height: 250px;">
+            <h3 class="bg-secondary text-white p-2 text-center shadow-sm">Quadrant IV: Not Urgent & Not Important</h3>
+            @if (Model.Any(x => x.Quadrant == 4 && !x.Completed))
+            {
+                @await Html.PartialAsync("_TaskTable", Model.Where(x => x.Quadrant == 4 && !x.Completed).ToList())
+            }
+            else
+            {
+                <p class="text-muted text-center mt-4"><em>Quadrant IV is empty. Stay productive!</em></p>
+            }
+        </div>
+    </div>
 </div>
-</body>
-</html>
