@@ -2,6 +2,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Mission8.Models;
 
+// Model for the tasks. Listing out their requirements and data types.
 public class TaskModel
 {
     [Key]

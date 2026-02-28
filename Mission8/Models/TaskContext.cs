@@ -7,10 +7,11 @@ public class TaskContext : DbContext
     public TaskContext(DbContextOptions<TaskContext> options) : base(options)
     {
     }
-
+// Set up the two separate tables.
     public DbSet<TaskModel> Tasks => Set<TaskModel>();
     public DbSet<Category> Categories => Set<Category>();
-
+    
+    // Create them with their relationships. 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.Entity<Category>()

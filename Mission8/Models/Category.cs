@@ -2,6 +2,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Mission8.Models;
 
+//Categories broken out into a separate table
 public class Category
 {
     [Key]

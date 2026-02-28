@@ -8,7 +8,7 @@ public static class SeedData
         var context = scope.ServiceProvider.GetRequiredService<TaskContext>();
 
         context.Database.EnsureCreated();
-
+// Set up the categories for the dropdown
         if (!context.Categories.Any())
         {
             context.Categories.AddRange(
