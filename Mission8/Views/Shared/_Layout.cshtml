@@ -19,7 +19,8 @@
             <div class="container-fluid">
 
                 <!-- Ryan: Brand link now points to Quadrants as the home base -->
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Quadrants">7 Habits Task Manager</a>
+                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">7 Habits Task Manager</a>
+                @* <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Quadrants">7 Habits Task Manager</a> *@
 
                 <!-- Hamburger button for mobile — unchanged from default -->
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse"
@@ -33,7 +34,9 @@
                          with the two required app views per assignment spec
                          ===================================================== -->
                     <ul class="navbar-nav flex-grow-1">
-
+                        <li class="nav-item">
+                            <a class="nav-link text-white" asp-controller="Home" asp-action="Index">Home</a>
+                        </li>
                         <!-- Ryan: Nav link to the Add/Edit Task form (Tasks action) -->
                         <li class="nav-item">
                             <a class="nav-link text-white" asp-area="" asp-controller="Home" asp-action="Tasks">Add/Edit Task</a>
@@ -42,7 +45,7 @@
                         <!-- Ryan: Nav link to the Quadrants view (Quadrants action) -->
                         <li class="nav-item">
                             <a class="nav-link text-white" asp-area="" asp-controller="Home" asp-action="Quadrants">View Quadrants</a>
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Quadrants">Quadrants</a>
+                            @* <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Quadrants">Quadrants</a> *@
                         </li>
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
@@ -54,7 +57,7 @@
         </nav>
     </header>
 
-    <!-- Main content area — unchanged, each view renders inside @RenderBody() -->
+    <!-- Main content area — unchanged, each view renders inside -->
     <div class="container">
         <main role="main" class="pb-3">
             @RenderBody()

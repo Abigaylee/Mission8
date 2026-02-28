@@ -6,7 +6,7 @@
    - Requires: ViewBag.Categories SelectList from controller (Person 4)
    ===================================================== *@
 
-@model Mission8.Models.TaskItem
+@model Mission8.Models.TaskModel
 
 
 @{
@@ -28,9 +28,9 @@
 
                 <!-- Ryan: Task Name � Required field per assignment -->
                 <div class="mb-3">
-                    <label asp-for="TaskName" class="form-label">Task <span class="text-danger">*</span></label>
-                    <input asp-for="TaskName" class="form-control" placeholder="Enter task name" />
-                    <span asp-validation-for="TaskName" class="text-danger"></span>
+                    <label asp-for="Task" class="form-label">Task <span class="text-danger">*</span></label>
+                    <input asp-for="Task" class="form-control" placeholder="Enter task name" />
+                    <span asp-validation-for="Task" class="text-danger"></span>
                 </div>
 
                 <!-- Ryan: Due Date � Optional per assignment -->

@@ -17,7 +17,7 @@
         <tr>
             <td>
                 <a asp-controller="Home" asp-action="Edit" asp-route-id="@t.TaskId" class="text-decoration-none fw-bold">
-                    @t.TaskName
+                    @t.Task
                 </a>
             </td>
             <td>@t.DueDate?.ToShortDateString()</td>

@@ -1,6 +1,4 @@
-using Mission8.Models;
-
-namespace Mission8.Data;
+namespace Mission8.Models;
 
 public static class SeedData
 {

@@ -1,7 +1,6 @@
 using Microsoft.EntityFrameworkCore;
-using Mission8.Models;
 
-namespace Mission8.Data;
+namespace Mission8.Models;
 
 public class TaskContext : DbContext
 {

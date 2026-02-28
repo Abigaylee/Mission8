@@ -1,5 +1,5 @@
 using Microsoft.EntityFrameworkCore;
-using Mission8.Data;
+using Mission8.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -24,7 +24,11 @@ if (!app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+app.UseHttpsRedirection();
+app.UseStaticFiles(); // Add this line!
 app.UseRouting();
+//app.UseRouting();
+
 
 app.UseAuthorization();
 
